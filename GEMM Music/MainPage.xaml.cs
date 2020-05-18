@@ -39,9 +39,7 @@ namespace GEMM_Music
             MenuItems.Add(new MenuItem { IconFile = "Assets/Icons/demi.png", Category = MusicCategory.Demis });
             MenuItems.Add(new MenuItem { IconFile = "Assets/Icons/drake.png", Category = MusicCategory.Drakes });
             MenuItems.Add(new MenuItem { IconFile = "Assets/Icons/selena.png", Category = MusicCategory.Selenas });
-           
-
-
+  
             BackButton.Visibility = Visibility.Collapsed;
         }
 
@@ -63,6 +61,8 @@ namespace GEMM_Music
             var music = (Music)e.ClickedItem;
             MyMediaElement.Source = new Uri(BaseUri, music.AudioFile);
             SelectedImage.ImageSource = new BitmapImage(new Uri(BaseUri, music.ImageFile));
+            //SoundGridView.Visibility = Visibility.Collapsed;
+
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -71,6 +71,11 @@ namespace GEMM_Music
             CatergoryTextBlock.Text = "All Musics";
             MenuItemsListview.SelectedItem = null;
             BackButton.Visibility = Visibility.Collapsed;
+        }
+
+        private void mySearchBox_QuerySubmitted(SearchBox sender, SearchBoxQuerySubmittedEventArgs args)
+        {
+            MusicManager.SearchByName(Musics, args.QueryText);
         }
     }
 }

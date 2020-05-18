@@ -10,10 +10,8 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush x:Name="SelectedImage" Stretch="None" Opacity="20"  ImageSource="Assets/headphones.jpg"  />
+            <ImageBrush x:Name="SelectedImage" Stretch="Uniform" Opacity="20"  />
         </Grid.Background>
-
-       
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -50,11 +48,25 @@
                 </ListView>
             </SplitView.Pane>
             <SplitView.Content>
+                
+                
+                
                 <Grid Margin="20,20,0,0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
+
+                    <!--Search starts here-->
+                    <SearchBox x:Name="mySearchBox"
+                               FocusOnKeyboardInput="True"
+                               QuerySubmitted="mySearchBox_QuerySubmitted"  Width="400" Height="35" Margin="20,20,10,10"/>
+                    
+                   <!-- search ends here -->
+
+
+
+
                     <MediaElement Name="MyMediaElement" AutoPlay="True" />
                     <TextBlock Name="CatergoryTextBlock" Text="All Music" FontSize="24" />
                     <GridView Grid.Row="1"
@@ -63,9 +75,6 @@
                               ItemsSource="{x:Bind Musics}"
                               ItemClick="SoundGridView_ItemClick"
                               >
-                        
-                        
-                        
 
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="model:Music">
@@ -73,9 +82,7 @@
                             </DataTemplate>
                         </GridView.ItemTemplate>
                     </GridView>
-                </Grid>
-                
-                    
+                    </Grid>
             </SplitView.Content>
         </SplitView>
     

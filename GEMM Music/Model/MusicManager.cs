@@ -35,13 +35,22 @@ namespace GEMM_Music.Model
             musics.Add(new Music("Scorpion", MusicCategory.Drakes));
             musics.Add(new Music("LoseU", MusicCategory.Selenas));
             musics.Add(new Music("StarsDance", MusicCategory.Selenas));
-           
-            
-
-
-
+  
             return musics;
         }
+
+        /* Search button - Searching based on name and category - starts here */
+        public static void SearchByName(ObservableCollection<Music> musics, string queryText)
+        {
+            var allsongs = getMusics();
+            var SearchedSongsByNameCategory =
+                allsongs.Where(song => song.Name.ToUpper().Contains(queryText.ToUpper())
+                || song.Category.ToString().ToUpper().Contains(queryText.ToUpper())).ToList();
+            musics.Clear();
+            SearchedSongsByNameCategory.ForEach(music => musics.Add(music));
+            /* Search button - Searching based on name and category - ends here */
+        }
+
 
     }
 }
