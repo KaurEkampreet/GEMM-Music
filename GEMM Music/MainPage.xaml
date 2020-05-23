@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.Background>
-            <ImageBrush x:Name="SelectedImage" Stretch="Uniform" Opacity="20"  />
+            <ImageBrush x:Name="SelectedImage" Stretch="Uniform" Opacity="20" />
         </Grid.Background>
 
         <Grid.RowDefinitions>
@@ -18,6 +18,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <RelativePanel>
+            
             <Button Name="HamburgerButton"
                 RelativePanel.AlignLeftWithPanel="True"
                 FontFamily="Segoe MDL2 Assets"
@@ -32,7 +33,7 @@
         <SplitView Grid.Row="1" Name="MysplitView"
                    DisplayMode="CompactOverlay"
                    CompactPaneLength="50"
-                   OpenPaneLength="200" >
+                   OpenPaneLength="200" Margin="-1,2,1,0" >
 
             <SplitView.Pane>
                 <ListView Name="MenuItemsListview" IsItemClickEnabled="True" 
@@ -40,36 +41,46 @@
                     <ListView.ItemTemplate>
                         <DataTemplate x:DataType="model:MenuItem">
                             <StackPanel Orientation="Horizontal">
-                            <Image Source="{x:Bind IconFile}" Height="100" Width="50" Margin="-16,10,0,10" />
-                            <TextBlock Text="{x:Bind Category}" FontSize="18" Margin="10,0,0,0" VerticalAlignment="Center" />
+                                <Image Source="{x:Bind IconFile}" Height="35" Width="50" Margin="-16,10,0,10" />
+                                <TextBlock Text="{x:Bind Category}" FontSize="18" Margin="10,0,0,0" VerticalAlignment="Center" />
                             </StackPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </SplitView.Pane>
             <SplitView.Content>
-                
-                
-                
-                <Grid Margin="20,20,0,0">
+
+                <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto" />
-                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
                     <!--Search starts here-->
-                    <SearchBox x:Name="mySearchBox"
+                    <SearchBox Grid.Row="0" x:Name="mySearchBox"
                                FocusOnKeyboardInput="True"
-                               QuerySubmitted="mySearchBox_QuerySubmitted"  Width="400" Height="35" Margin="20,20,10,10"/>
-                    
-                   <!-- search ends here -->
+                               QuerySubmitted="mySearchBox_QuerySubmitted"  Width="400" Height="35" Margin="20,20,10,10" Canvas.ZIndex="100"/>
+                    <!-- search ends here -->
 
+                    <TextBlock Grid.Row="1" Name="CategoryTextBlock" Text="All Music" FontSize="24" HorizontalAlignment="Left" FontWeight="Bold" />
 
+                    <StackPanel Name="MusicDetails" Grid.Row="3" HorizontalAlignment="Center" Visibility="Collapsed">
 
+                        <Grid>
+                            <Border Opacity="0.5" Background="#FF140D0D" ></Border>
+                            <TextBlock  Name="MusicTitle" Text=" " Foreground="White" FontWeight="Bold" FontSize="24"  HorizontalAlignment="Center"  />
+                        </Grid>
 
-                    <MediaElement Name="MyMediaElement" AutoPlay="True" />
-                    <TextBlock Name="CatergoryTextBlock" Text="All Music" FontSize="24" />
-                    <GridView Grid.Row="1"
+                        <TextBlock Name="AlbumName" Text=" " FontSize="15" FontWeight="Bold" HorizontalAlignment="Center" />
+                    </StackPanel>
+
+                    <MediaPlayerElement Grid.Row="4" Name="MyMediaElement"  Visibility="Collapsed" VerticalAlignment="Center"
+                                        AreTransportControlsEnabled="True" AutoPlay="True"/>
+
+                    <GridView Grid.Row="2"
                              Name="SoundGridView"
                              IsItemClickEnabled="True"
                               ItemsSource="{x:Bind Musics}"
@@ -78,13 +89,15 @@
 
                         <GridView.ItemTemplate>
                             <DataTemplate x:DataType="model:Music">
-                                <Image Name="MyImage" Height="112" Width="101" Source="{x:Bind ImageFile}" />
+                                <StackPanel Padding="50,0,0,0">
+                                    <Image Name="MyImage" Height="112" Width="101" Source="{x:Bind ImageFile}" />
+                                    <TextBlock Name="MusicName" Text="{x:Bind Name}" FontSize="15" FontWeight="Bold" />
+                                </StackPanel>
                             </DataTemplate>
                         </GridView.ItemTemplate>
                     </GridView>
-                    </Grid>
+                </Grid>
             </SplitView.Content>
         </SplitView>
-    
     </Grid>
 </Page>

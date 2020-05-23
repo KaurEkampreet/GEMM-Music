@@ -122,6 +122,7 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\LibUtility.cs" />
     <Compile Include="Model\MenuItem.cs" />
     <Compile Include="Model\Music.cs" />
     <Compile Include="Model\MusicManager.cs" />
@@ -144,18 +145,30 @@
     <Content Include="Assets\Icons\selena.png" />
     <Content Include="Assets\Images\Brunos\Magic.png" />
     <Content Include="Assets\Images\Brunos\Uptown.png" />
+    <Content Include="Assets\Images\Demis\CheapThrills.png" />
     <Content Include="Assets\Images\Demis\Confident.png" />
     <Content Include="Assets\Images\Demis\Sorry.png" />
     <Content Include="Assets\Images\Drakes\Hotline.png" />
     <Content Include="Assets\Images\Drakes\Scorpion.png" />
+    <Content Include="Assets\Icons\MyPlaylist.png" />
+    <Content Include="Assets\Images\MyPlaylist.png" />
     <Content Include="Assets\Images\Selenas\LoseU.png" />
     <Content Include="Assets\Images\Selenas\StarsDance.png" />
     <Content Include="Assets\Music\Brunos\Magic.mp3" />
     <Content Include="Assets\Music\Brunos\Uptown.mp3" />
+    <Content Include="Assets\Music\Demis\CheapThrills.mp3" />
     <Content Include="Assets\Music\Demis\Confident.mp3" />
     <Content Include="Assets\Music\Demis\Sorry.mp3" />
     <Content Include="Assets\Music\Drakes\Hotline.mp3" />
     <Content Include="Assets\Music\Drakes\Scorpion.mp3" />
+    <Content Include="Assets\Music\MyPlaylist.png" />
+    <Content Include="Assets\Music\MyPlaylist\Aankh_Marey.mp3" />
+    <Content Include="Assets\Music\MyPlaylist\Bum_Chiki.mp3" />
+    <Content Include="Assets\Music\MyPlaylist\Coca_Cola_%28From__Luka_Chuppi_%29.mp3" />
+    <Content Include="Assets\Music\MyPlaylist\Neeli_Neeli_Aakasam_%28From__30_Rojullo_Preminchadam_Ela_%29.mp3" />
+    <Content Include="Assets\Music\MyPlaylist\Nuvve_Nuvve_%28From__Red_%29.mp3" />
+    <Content Include="Assets\Music\MyPlaylist\Oo__Baava_.mp3" />
+    <Content Include="Assets\Music\MyPlaylist\Sye_Raa.mp3" />
     <Content Include="Assets\Music\Selenas\LoseU.mp3" />
     <Content Include="Assets\Music\Selenas\StarsDance.mp3" />
     <Content Include="Properties\Default.rd.xml" />
@@ -180,6 +193,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.9</Version>
+    </PackageReference>
+    <PackageReference Include="taglib">
+      <Version>2.1.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup />
