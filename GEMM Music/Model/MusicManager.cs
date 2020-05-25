@@ -63,7 +63,11 @@ namespace GEMM_Music.Model
             {
                 var file = TagLib.File.Create(audioFilePath);
                 // mySongs.Add(new Music(file.Tag.Title, MusicCategory.MyPlaylist, audioFilePath, file.Tag.Album));
-                Music music = new Music(file.Tag.Title, MusicCategory.MyPlaylist, audioFilePath, file.Tag.Album);
+                //  Music music = new Music(file.Tag.Title, MusicCategory.MyPlaylist, audioFilePath, file.Tag.Album);
+                string artistname = string.Empty;
+                if (file.Tag.Artists != null && file.Tag.Artists.Length > 0)
+                    artistname = file.Tag.Artists[0];
+                Music music = new Music(file.Tag.Album, file.Tag.Title, MusicCategory.MyPlaylist, audioFilePath, artistname);
                 if (music.Name == null)
                 {
                     music.Name = " ";
