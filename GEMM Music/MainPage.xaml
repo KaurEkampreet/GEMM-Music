@@ -18,7 +18,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <RelativePanel>
-            
+
             <Button Name="HamburgerButton"
                 RelativePanel.AlignLeftWithPanel="True"
                 FontFamily="Segoe MDL2 Assets"
@@ -63,9 +63,13 @@
                     <SearchBox Grid.Row="0" x:Name="mySearchBox"
                                FocusOnKeyboardInput="True"
                                QuerySubmitted="mySearchBox_QuerySubmitted"  Width="400" Height="35" Margin="20,20,10,10" Canvas.ZIndex="100"/>
+                    <TextBlock Grid.Row="0" FontWeight="Bold" FontSize="25" HorizontalAlignment="Left" Margin="336,0,0,0" Foreground="Black" Width="173"/>
                     <!-- search ends here -->
 
-                    <TextBlock Grid.Row="1" Name="CategoryTextBlock" Text="All Music" FontSize="24" HorizontalAlignment="Left" FontWeight="Bold" />
+
+                    <TextBlock Grid.Row="1" Name="CategoryTextBlock" Text="All Music" Foreground="Black" FontSize="24" HorizontalAlignment="Left" FontWeight="Bold" />
+
+
 
                     <StackPanel Name="MusicDetails" Grid.Row="3" HorizontalAlignment="Center" Visibility="Collapsed">
 
@@ -74,11 +78,19 @@
                             <TextBlock  Name="MusicTitle" Text=" " Foreground="White" FontWeight="Bold" FontSize="24"  HorizontalAlignment="Center"  />
                         </Grid>
 
-                        <TextBlock Name="AlbumName" Text=" " FontSize="15" FontWeight="Bold" HorizontalAlignment="Center" />
+                        <!--<TextBlock Name="AlbumName" Text=" " FontSize="15" FontWeight="Bold" HorizontalAlignment="Center" />-->
                     </StackPanel>
 
                     <MediaPlayerElement Grid.Row="4" Name="MyMediaElement"  Visibility="Collapsed" VerticalAlignment="Center"
                                         AreTransportControlsEnabled="True" AutoPlay="True"/>
+                    <StackPanel >
+                        <TextBox x:Name="ArtistTextBlock"
+                     Header="Artist Name:" PlaceholderText="Artist Name"
+                     Width="300" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                        <TextBox x:Name="AlbumTextBlock"
+                     Header="Album name:" PlaceholderText="Album Name"
+                     Width="300" HorizontalAlignment="Left" Margin="10,0,0,0"/>
+                    </StackPanel>
 
                     <GridView Grid.Row="2"
                              Name="SoundGridView"
@@ -92,12 +104,23 @@
                                 <StackPanel Padding="50,0,0,0">
                                     <Image Name="MyImage" Height="112" Width="101" Source="{x:Bind ImageFile}" />
                                     <TextBlock Name="MusicName" Text="{x:Bind Name}" FontSize="15" FontWeight="Bold" />
+
+
                                 </StackPanel>
                             </DataTemplate>
+
                         </GridView.ItemTemplate>
+
                     </GridView>
+
+
                 </Grid>
             </SplitView.Content>
+
         </SplitView>
+
+
     </Grid>
+
+
 </Page>

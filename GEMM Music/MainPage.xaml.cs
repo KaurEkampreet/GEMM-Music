@@ -43,6 +43,8 @@ namespace GEMM_Music
             MenuItems.Add(new MenuItem { IconFile = "Assets/Icons/MyPlaylist.png", Category = MusicCategory.MyPlaylist });
 
             BackButton.Visibility = Visibility.Collapsed;
+            ArtistTextBlock.Visibility = Visibility.Collapsed;
+            AlbumTextBlock.Visibility = Visibility.Collapsed;
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)
@@ -69,6 +71,10 @@ namespace GEMM_Music
             //MyMediaElement.Source = new Uri(BaseUri, music.AudioFile);
             MyMediaElement.Source = MediaSource.CreateFromUri(new Uri(BaseUri, music.AudioFile));
             SelectedImage.ImageSource = new BitmapImage(new Uri(BaseUri, music.ImageFile));
+            ArtistTextBlock.Text = music.Artist;
+            AlbumTextBlock.Text = music.Album;
+            ArtistTextBlock.Visibility = Visibility.Visible;
+            AlbumTextBlock.Visibility = Visibility.Visible;
             SoundGridView.Visibility = Visibility.Collapsed;
             mySearchBox.Visibility = Visibility.Collapsed;
             CategoryTextBlock.Visibility = Visibility.Collapsed;
@@ -81,18 +87,17 @@ namespace GEMM_Music
 
                 var file = TagLib.File.Create(music.AudioFile);
                 MusicTitle.Text = file.Tag.Title;
-                AlbumName.Text = file.Tag.Album;
+                //AlbumName.Text = file.Tag.Album;
             }
             catch
             {
                 Console.WriteLine("exception handled");
                 MusicTitle.Text = music.Name;
-                AlbumName.Text = music.Album;
+                //AlbumName.Text = music.Album;
             }
 
         }
    
-
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             MusicManager.GetAllMusic(Musics);
@@ -101,6 +106,8 @@ namespace GEMM_Music
             BackButton.Visibility = Visibility.Collapsed;
             SoundGridView.Visibility = Visibility.Visible;
             mySearchBox.Visibility = Visibility.Visible;
+            ArtistTextBlock.Visibility = Visibility.Collapsed;
+            AlbumTextBlock.Visibility = Visibility.Collapsed;
         }
 
         private void mySearchBox_QuerySubmitted(SearchBox sender, SearchBoxQuerySubmittedEventArgs args)

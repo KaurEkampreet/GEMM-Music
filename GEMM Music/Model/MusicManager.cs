@@ -11,7 +11,7 @@ namespace GEMM_Music.Model
     public static class MusicManager
     {
         //private static string MY_SONGS_PATH = "Assets/Music/MyPlaylist";
-        private static string MY_SONGS_PATH = "C:/Users/saige/source/KalAcademy/GEMM Music/GEMM Music/bin/x86/Debug/AppX/MyPlaylist";
+        private static string MY_SONGS_PATH = "C:/Users/Kaure/source/KalAcademy/GEMM Music/GEMM Music/bin/x86/Debug/AppX/MyPlaylist";
         public static void GetAllMusic(ObservableCollection<Music> musics)
         {
             var allMusics = getMusics();
@@ -30,15 +30,24 @@ namespace GEMM_Music.Model
         private static List<Music> getMusics()
         {
             var musics = new List<Music>();
-            musics.Add(new Music("Magic", MusicCategory.Brunos));
-            musics.Add(new Music("Uptown", MusicCategory.Brunos));           
-            musics.Add(new Music("Confident", MusicCategory.Demis));
-            musics.Add(new Music("Sorry", MusicCategory.Demis));
-            musics.Add(new Music("Hotline", MusicCategory.Drakes));
-            musics.Add(new Music("Scorpion", MusicCategory.Drakes));
-            musics.Add(new Music("LoseU", MusicCategory.Selenas));
-            musics.Add(new Music("StarsDance", MusicCategory.Selenas));
-            musics.Add(new Music("CheapThrills", MusicCategory.Demis));
+            //musics.Add(new Music("Magic", MusicCategory.Brunos));
+            //musics.Add(new Music("Uptown", MusicCategory.Brunos));
+            //musics.Add(new Music("Confident", MusicCategory.Demis));
+            //musics.Add(new Music("Sorry", MusicCategory.Demis));
+            //musics.Add(new Music("Hotline", MusicCategory.Drakes));
+            //musics.Add(new Music("Scorpion", MusicCategory.Drakes));
+            //musics.Add(new Music("LoseU", MusicCategory.Selenas));
+            //musics.Add(new Music("StarsDance", MusicCategory.Selenas));
+            //musics.Add(new Music("CheapThrills", MusicCategory.Demis));
+
+            musics.Add(new Music("Magic", MusicCategory.Brunos, "24K Magic", "Bruno Mars"));
+            musics.Add(new Music("Uptown", MusicCategory.Brunos, "UpTownFunk", "Mark Ronson"));
+            musics.Add(new Music("Confident", MusicCategory.Demis, "ConfidentR", "Demi Lovato"));
+            musics.Add(new Music("Sorry", MusicCategory.Demis, "Souveniers", "Demis Rousso"));
+            musics.Add(new Music("Hotline", MusicCategory.Drakes, "Hotline Bling", "Drake Graham"));
+            musics.Add(new Music("Scorpion", MusicCategory.Drakes, "Scorpion 2018", "Drake Graham"));
+            musics.Add(new Music("LoseU", MusicCategory.Selenas, "Lose You to Love Me", "Selena Gomez"));
+            musics.Add(new Music("StarsDance", MusicCategory.Selenas, "Stars Dance 2013", "Selena Gomez"));
 
             var mySongs = getMySongs();
             musics.AddRange(mySongs);
@@ -70,6 +79,7 @@ namespace GEMM_Music.Model
             var allsongs = getMusics();
             var SearchedSongsByNameCategory =
                 allsongs.Where(music => music.Name.ToUpper().Contains(queryText.ToUpper())
+                || music.Artist != null && music.Artist.ToString().ToUpper().Contains(queryText.ToUpper())
                 || music.Category.ToString().ToUpper().Contains(queryText.ToUpper())).ToList();
             musics.Clear();
             SearchedSongsByNameCategory.ForEach(music => musics.Add(music));

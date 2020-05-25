@@ -22,8 +22,10 @@ namespace GEMM_Music.Model
         public string AudioFile { get; set; }
         public string ImageFile { get; set; }
         public string Album { get; set; }
+        public string Artist { get; set; }
 
-        public Music(string name, MusicCategory category)
+
+        public Music(string name, MusicCategory category, string album, string artist)
         {
             Name = name;
             Category = category;
@@ -31,15 +33,18 @@ namespace GEMM_Music.Model
             //AudioFile = $"/Assets/Music/Brunos/Magic.mp3";
             ImageFile = $"/Assets/Images/{category}/{name}.png";
             //ImageFile = $"Assets/Images/Demis/CheapThrills.png";
-            Album = "";
+            //Album = "";
+            Album = album;
+            Artist = artist;
         }
-        public Music(string name, MusicCategory category, string audioFile, string album)
+        public Music(string album, string name, MusicCategory category, string audioFile, string artist)
         {
             Name = name;
             Category = category;
             AudioFile = audioFile;
             ImageFile = $"Assets/Images/MyPlaylist.png";
-            Album = "";
+            Album = album;
+            Artist = artist;
         }
     }
 }
